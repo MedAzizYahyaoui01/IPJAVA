@@ -8,13 +8,18 @@ statistics and an availability forecast.
 
 ## Run it
 
-Requirements: JDK 21+, Maven 3.9+.
+Requirements: JDK 21+ (`JAVA_HOME` must point to it). Maven is not needed: the
+Maven Wrapper (`mvnw` / `mvnw.cmd`) downloads Maven 3.9.9 on first run.
 
 ```bash
-mvn test                                        # run the 12 unit tests
-mvn compile exec:java -Dexec.args="--demo"      # scripted scenario (workflows 6.1 and 6.2)
-mvn compile exec:java                           # interactive menu
+./mvnw test                                     # run the 12 unit tests
+./mvnw compile exec:java -Dexec.args="--demo"   # scripted scenario (workflows 6.1 and 6.2)
+./mvnw compile exec:java                        # interactive menu
 ```
+
+On Windows (cmd / PowerShell) use `mvnw.cmd` instead of `./mvnw`.
+
+Storage: H2 embedded database (dependency in place; JDBC repositories come in Sprint 3).
 
 Without Maven:
 
@@ -65,7 +70,7 @@ System: **Spot sensor**, **Plate camera (ANPR)**, **Payment gateway**, **Schedul
 
 ## Roadmap
 
-- [ ] Replace in-memory storage with JDBC (MySQL/H2)
+- [ ] Replace in-memory storage with JDBC (H2 embedded)
 - [ ] Sensor simulator thread (or real ESP32 sensors over MQTT)
 - [ ] JavaFX dashboard or REST API (Spring Boot)
 - [ ] Monthly subscriptions (F6.4) and revenue report per period (F7.2)
